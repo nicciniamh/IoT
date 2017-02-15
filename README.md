@@ -9,7 +9,7 @@ I have three devices I use for my IoT
 - [WeMos D1 Mini](https://www.wemos.cc/product/d1-mini.html)
 
 Both Pi units run Linux and the WeMos D1 uses 'bare-metal' code downloaded directly to the device. Each device has network connectivity. The Raspberry Pi uses Cat 5 Ethernet and the other devices use WiFi
-
+```
 The example code expects the following structure under home:
 ├── bin
 │   └── dht.py           - Python Example
@@ -23,4 +23,4 @@ The example code expects the following structure under home:
 └── www                 - WWW Examples (I have this symlinked to my server folder)
     ├── dht11.php
     └── dht11x.php
-
+```
