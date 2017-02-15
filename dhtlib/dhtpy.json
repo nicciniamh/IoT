@@ -1,0 +1,9 @@
+{"baseurl": "http://$sys.ducksfeet.com/sensor/temp",
+ "icondir": "$home/dhtlib/icons",
+ "appicon": "$icondir/dht.png",
+ "fsize": 48,
+ "title": "DHT11 IoT Stuff",
+"dhts": [
+    {"sys": "rpi", "id": "Living Room",   "logo": "$icondir/rpi.png", "tdrift": 0, "thigh": 80, "tlow": 60, "hhigh": 80, "hlow": 10, "hdrift": 20},
+    {"sys": "bpi", "id": "Nicci's Room",  "logo": "$icondir/bpi.png", "tdrift": 0, "thigh": 80, "tlow": 60, "hhigh": 80, "hlow": 10, "hdrift": 20}
+]}
