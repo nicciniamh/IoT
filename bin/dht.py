@@ -80,8 +80,8 @@ class dhtItem:
         try:
             data = json.loads(urllib.urlopen(self.url).read())
             
-            self.temp = float(data["tf"]) + self.tdrift
-            self.humidity  = int(float(data["h"])  + self.hdrift)
+            self.temp = float(data["temperature"]) + self.tdrift
+            self.humidity  = int(float(data["humidity"])  + self.hdrift)
             self.stime = int(data["time"])
             tcolor = "green2"
             if self.temp >= self.thigh:
@@ -141,8 +141,8 @@ class DHT:
         for d in self.dhtItems:
             try:
                 d.getData()
-            except Exception as e:
-                log.message(d.sys+": collect data error: "+e) 
+            except Exception, e:
+                log.message(str(d.sys)+": collect data error: "+str(e) )
                 print str(e)
         if self.isQuit:
             self.master.quit()
@@ -157,8 +157,15 @@ img = Image("photo", file=appicon)
 root.tk.call('wm','iconphoto',root._w,img)
 
 my_gui = DHT(root)
+
+screenwidth = root.winfo_screenwidth()
+windowwidth = root.winfo_width()
+distance = screenwidth - windowwidth
+root.geometry('+'+str(distance)+'+0')
+
 try:
     root.mainloop()
 except KeyboardInterrupt:
     print "KeyboardInterrupt"
     my_gui.stop()
+
