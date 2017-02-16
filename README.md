@@ -1,6 +1,7 @@
 Internet of Things (IoT) Stuff
 
-These files contain descriptions and exampls of my IoT Strategies.
+These files contain descriptions and exampls of my IoT Strategies. Please see 
+[IoT Strategy.pdf](Iot%20Strategy.pdf)
 
 I have three devices I use for my IoT
 
