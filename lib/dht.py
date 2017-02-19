@@ -50,6 +50,7 @@ class dhtSensor(iot.iotSensor):
         self.status = 0
         self.value = 0
         self.alarm = ''
+        self.stime = 0.0
         
     def __str__(self):
         return "dhtSensor(type='{}' units={} id='({}){}' value={} status={} high={} low={} url='{}' alarm='{}'".format(self.sensType, self.units, self.sys,self.id, self.value, self.status, self.high, self.low, self.url,self.alarm)

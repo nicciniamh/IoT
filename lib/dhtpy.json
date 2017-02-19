@@ -1,8 +1,8 @@
 {"baseurl": "http://$sys.ducksfeet.com/sensor/temp",
- "appicon": "lib/icons/dht.png",
+ "appicon": "lib/icons/dht.gif",
  "fsize": 48,
  "title": "DHT11 IoT Stuff",
 "dhts": [
-    {"sys": "rpi", "id": "Living Room",   "logo": "lib/icons/rpi.png", "tdrift": 0, "thigh": 80, "tlow": 60, "hhigh": 80, "hlow": 10, "hdrift": 20},
-    {"sys": "bpi", "id": "Nicci's Room",  "logo": "lib/icons/bpi.png", "tdrift": 0, "thigh": 80, "tlow": 60, "hhigh": 80, "hlow": 10, "hdrift": 20}
+    {"sys": "rpi", "id": "Living Room",   "logo": "lib/icons/rpi.gif", "tdrift": 0, "thigh": 80, "tlow": 60, "hhigh": 80, "hlow": 10, "hdrift": 20},
+    {"sys": "bpi", "id": "Nicci's Room",  "logo": "lib/icons/bpi.gif", "tdrift": 0, "thigh": 80, "tlow": 60, "hhigh": 80, "hlow": 10, "hdrift": 20}
 ]}

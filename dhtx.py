@@ -15,7 +15,6 @@ config = "lib/dhtpy.json"
 print "Using config in",config
 
 
-
 try:
     conf = json.loads(open(config).read())
                 
@@ -27,7 +26,20 @@ except Exception as e:
 appicon = conf["appicon"]
 degree_sign= u'\N{DEGREE SIGN}'
 
-colors = ["blue","green2","red"]
+if not "labelcolors" in conf:
+	colors = ["blue2","green2","red"]
+else:
+	colors = conf["labelcolors"]
+
+if not 'bgcolor' in conf:
+	bgcolor = "black"
+else:
+	bgcolor = conf["bgcolor"]
+	
+if not 'fgcolor' in conf:
+	fgcolor = "white"
+else:
+	bgcolor = conf["fgcolor"]
 
 class dhtItem(threading.Thread):
     """ 
@@ -42,15 +54,15 @@ class dhtItem(threading.Thread):
         self.sys = dhtdef['sys']
         self.id = dhtdef['id']
         self.logo = PhotoImage(file=dhtdef['logo'])
-        self.image = Label(master,image=self.logo)
+        self.image = Label(master,image=self.logo, background=bgcolor, foreground=fgcolor)
       
-        self.idlabel = Label(master,text=self.id+"("+self.sys+")", justify=LEFT)
+        self.idlabel = Label(master,text=self.id+"("+self.sys+")", justify=LEFT, background=bgcolor, foreground=fgcolor)
         self.idlabel.config(font=int(conf["fsize"]))
-        self.tlabel = Label(master, text="", justify=RIGHT)
+        self.tlabel = Label(master, text="", justify=RIGHT, background=bgcolor, foreground=fgcolor)
         self.tlabel.config(font=int(conf["fsize"]))
-        self.hlabel = Label(master, text="", justify=RIGHT)
+        self.hlabel = Label(master, text="", justify=RIGHT, background=bgcolor, foreground=fgcolor)
         self.hlabel.config(font=int(conf["fsize"]))
-        self.tmlabel = Label(master, text="", justify=RIGHT)
+        self.tmlabel = Label(master, text="", justify=RIGHT, background=bgcolor, foreground=fgcolor)
         self.tmlabel.config(font=int(conf["fsize"]))
         self.event = threading.Event()
         threading.Thread.__init__(self)
@@ -72,17 +84,25 @@ class dhtItem(threading.Thread):
             self.event.wait(2)
 
     def poll(self):
-        t = self.temp.getData().value 
-        h = self.humi.getData().value 
-        tcolor = colors[self.temp.status+1]
-        hcolor = colors[self.humi.status+1]
+		try:
+		    t = self.temp.getData().value 
+		    h = self.humi.getData().value 
+		    tcolor = colors[self.temp.status+1]
+		    hcolor = colors[self.humi.status+1]
+		    
+		    tstr = '{}@deg'.format(t).replace('@deg',degree_sign)
+		    hstr = '{}%'.format(h)
+		    
+		except IOError as i:
+			tstr = '!err {}'.format(i)
+			tcolor = colors[2]
+			hcolor = colors[2]
+			hstr = ''
+	    	
         
-        tstr = '{}@deg'.format(t).replace('@deg',degree_sign)
-        hstr = '{}%'.format(h)
-        
-        self.tlabel.config(text=tstr, fg=tcolor)
-        self.hlabel.config(text=hstr, fg=hcolor)
-        self.tmlabel.config(text=str(time.strftime('%x %X', time.localtime(self.temp.stime))))
+		self.tlabel.config(text=tstr, fg=tcolor)
+		self.hlabel.config(text=hstr, fg=hcolor)
+		self.tmlabel.config(text=str(time.strftime('%x %X', time.localtime(self.temp.stime))))
 
 #
 # This is our main class
@@ -152,6 +172,7 @@ screenwidth = root.winfo_screenwidth()
 windowwidth = root.winfo_width()
 distance = screenwidth - windowwidth
 root.geometry('+'+str(distance)+'+0')
+root.configure(background=bgcolor)
 
 try:
     root.mainloop()
