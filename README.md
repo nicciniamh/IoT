@@ -15,7 +15,9 @@ The example code expects the following structure under home:
 ├── bin
 │   └── dht.py           - Python Example
 ├── dhtlib               - Library for Python Example
-│   ├── dhtpy.json
+│   ├── dhtpy.json       - JSON configuration for example code
+    ├── iot.py           - iotSensor base class
+    ├── dht.py           - dhtSensor class
 │   ├── icons
 │   │   ├── bpi.png
 │   │   ├── dht.png
