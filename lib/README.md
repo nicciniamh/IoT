@@ -1,26 +1,3 @@
-#Internet of Things (IoT) Stuff - Updated Version
-
-These files contain descriptions and exampls of my IoT Strategies.
-
-I have three devices I use for my IoT
-
-- [Banana Pi](http://www.bananapi.org/p/product.html) I use the M2 model
-- [Raspberry Pi](https://www.raspberrypi.org/)  I am using a Pi model 2
-- [WeMos D1 Mini](https://www.wemos.cc/product/d1-mini.html)
-
-Both Pi units run Linux and the WeMos D1 uses 'bare-metal' code downloaded directly to the device. Each device has network connectivity. The Raspberry Pi uses Cat 5 Ethernet and the other devices use WiFi
-
-The example code expects the following structure:
-dhtx.py             Python/tkinter multi-threaded example program
-lib/                Class Libraries
-lib/iot.py          iotSensor Base Class
-lib/dht.py          dhtSensor class
-lib/dhtpy.json      JSON format configuration
-lib/icons           Icons
-lib/icons/bpi.png   BananaPi logo, 32x32
-lib/icons/dht.png   DHT11 logo, 32x32
-lib/icons/rpi.png   RaspberryPi logo, 32x32
-
 #IoT and DHT
 
 ## IoT
@@ -71,4 +48,5 @@ All of the iotSensor methods are available. Additional methods/properties are:
     
 Additionally the ```__str__``` method is defined so that str(dht.getValue()) or
 str(dht) will return an ugly but fill representation of the sensor's values and properties.
+
 
