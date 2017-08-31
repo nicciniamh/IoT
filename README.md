@@ -1,4 +1,4 @@
-#Internet of Things (IoT) Stuff - Updated Version
+# Internet of Things (IoT) Stuff - Updated Version
 
 These files contain descriptions and exampls of my IoT Strategies.
 
