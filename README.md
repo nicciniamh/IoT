@@ -10,19 +10,6 @@ I have three devices I use for my IoT
 
 Both Pi units run Linux and the WeMos D1 uses 'bare-metal' code downloaded directly to the device. Each device has network connectivity. The Raspberry Pi uses Cat 5 Ethernet and the other devices use WiFi
 
-representation of the sensor's values anThe example code expects the following structure:
-dhtx.py             Python/tkinter multi-threaded example program
-lib/                Class Libraries
-lib/iot.py          iotSensor Base Class
-lib/dht.py          dhtSensor class
-lib/dhtpy.json      JSON format configuration
-lib/icons           Icons
-lib/icons/bpi.png   BananaPi logo, 32x32
-lib/icons/dht.png   DHT11 logo, 32x32
-lib/icons/rpi.png   RaspberryPi logo, 32x32
-
-#IoT and DHT
-
 ## IoT
 The IoT base class (iotSensor) does nothing and throws an exception when instantiated. 
 The class is used simply as base for other IoT devices and allows for heterogenous 
