@@ -10,7 +10,7 @@ I have three devices I use for my IoT
 
 Both Pi units run Linux and the WeMos D1 uses 'bare-metal' code downloaded directly to the device. Each device has network connectivity. The Raspberry Pi uses Cat 5 Ethernet and the other devices use WiFi
 
-The example code expects the following structure:
+representation of the sensor's values anThe example code expects the following structure:
 dhtx.py             Python/tkinter multi-threaded example program
 lib/                Class Libraries
 lib/iot.py          iotSensor Base Class
@@ -41,34 +41,6 @@ The methods defined by the IoT base class are:
     isHigh()  Return boolean if data is equal or greater to high
     isLow()  Return boolean if data is equal or less to low
 ```
-## DHT
-The dhtSensor IoT class reads temperature or humidity from a DHT like sensor using urllib 
-to get the data values in JSON format. 
 
-The data expected has the format of: 
-``` {"time":1487469162,"temperature":68,"units":"f","status":"ok","humidity":20} ```
-
-The object is instantiated with:
- ```   dht = dhtSensor(type, definition_dict) ```
-Where
-    type  is 'temperature' or 'humidity'
-and
-    definition dict has the following members:
-                sys = system name
-                id = descriptive id
-                units = c or f for temperature sensors.
-                [t|h]drift = float to add to temperature or humidty
-                [t|h]high = float for high data value 
-                [t|h]low  = float for low data value 
-                url = device url from which to obtain data
-'''
-All of the iotSensor methods are available. Additional methods/properties are:
-    setUnits(unts)  - set temperature units in c or f. 
-    units   - c or f
-    value   - current value since last getData call
-    status  - status since last getData call (-1 low, 0 normal, 1 high)
-    alarm   - current alarm text, blank if no alarm
-    
-Additionally the ```__str__``` method is defined so that str(dht.getValue()) or
-str(dht) will return an ugly but fill representation of the sensor's values and properties.
+See [lib](lib/) for the specifics on the sensors.
 
