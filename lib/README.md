@@ -23,8 +23,10 @@ The methods defined by the IoT base class are:
 This should be used when dynamic sensor typing is to be used by an application. Sensor class modules 
 are not loaded until needed.
 
-The instance function is used from senclass to instantiate a sensor. E.g.
+The instance function is used from senclass to instantiate a sensor. E.g.:
+
 ``` sensor = senclass.instance('dht','temperature', {*definitiondict*}) ```
+
 This will return sensor as a sensor with the same interfaces (as apporpriate) as IoT, overriding them where needed. 
 
 ## DHT
