@@ -1,5 +1,3 @@
-#
-#
 import json, inspect, urllib, time, sys, iot, urlData
 from asteval import Interpreter
 aeval = Interpreter()
@@ -67,6 +65,11 @@ class Sensor(iot.iotSensor):
                 self.units = units
             else:
                 raise ValueError("Invalid units '{}' specified.".format(units))
+        else:
+            if units == '%':
+                self.units = '%'
+            else:
+                raise ValueError("Invalid units '{}' specified.".format(units))                
         return self
             
     def getData(self):

@@ -6,7 +6,7 @@ class dataException(Exception):
 def getData(url):
     ''' Read data from a uri and return it. 
         Possible excpetions:
-            dataException - when status is not 'ok'
+        dataException - when status is not 'ok'
     '''
     try:
         if not re.match(r'(https?://\S+)', url):

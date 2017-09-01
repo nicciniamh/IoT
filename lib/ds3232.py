@@ -7,12 +7,13 @@ class Sensor(iot.iotSensor):
     def __init__(self, senstype, d):
         ''' Constructor: paramters: type (always temperature)
                          d: dict with:
-                             sys = system name
-                             id = descriptive id
-                             tdrift = float to add to temperature or humidty
-                             thigh = float for high data value 
-                             tlow  = float for low data value 
-                             url = device url to obtain data
+                         sys = system name
+                         id = descriptive id
+                         tdrift = float to add to temperature or humidty
+                         thigh = float for high data value 
+                         tlow  = float for low data value 
+                         url = device url to obtain data
+                         maxAge = number of seconds of age when data is considered stale
         '''
         if not senstype in ['temperature']:
             raise ValueError("Invalid sensor type {}".format(senstype))

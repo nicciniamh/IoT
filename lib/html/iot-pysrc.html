@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>iot</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;iot
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="iot-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="iot-module.html">Module iot</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">inspect</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-string">''' base class for IoT sensors '''</tt> </tt>
+<a name="iotSensor"></a><div id="iotSensor-def"><a name="L3"></a><tt class="py-lineno"> 3</tt> <a class="py-toggle" href="#" id="iotSensor-toggle" onclick="return toggle('iotSensor');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="iot.iotSensor-class.html">iotSensor</a><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="iotSensor-expanded"><a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line">    <tt class="py-docstring">''' Base class for IoT sensors - template class only '''</tt>  </tt>
+<a name="iotSensor.__init__"></a><div id="iotSensor.__init__-def"><a name="L5"></a><tt class="py-lineno"> 5</tt> <a class="py-toggle" href="#" id="iotSensor.__init__-toggle" onclick="return toggle('iotSensor.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="iot.iotSensor-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iotSensor.__init__-expanded"><a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt><tt class="py-string">'cannot instantiate base IoT sensor class'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">     </tt>
+<a name="iotSensor.sendData"></a><div id="iotSensor.sendData-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="iotSensor.sendData-toggle" onclick="return toggle('iotSensor.sendData');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="iot.iotSensor-class.html#sendData">sendData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor.sendData-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iotSensor.sendData-expanded"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">        <tt class="py-docstring">''' send data to IoT device '''</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt> </tt>
+</div><a name="iotSensor.getData"></a><div id="iotSensor.getData-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="iotSensor.getData-toggle" onclick="return toggle('iotSensor.getData');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="iot.iotSensor-class.html#getData">getData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor.getData-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iotSensor.getData-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-docstring">''' Retrieve data from IoT device '''</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt> </tt>
+</div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">     </tt>
+<a name="iotSensor.setHigh"></a><div id="iotSensor.setHigh-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="iotSensor.setHigh-toggle" onclick="return toggle('iotSensor.setHigh');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="iot.iotSensor-class.html#setHigh">setHigh</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor.setHigh-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iotSensor.setHigh-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-docstring">''' Set high limit for data '''</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt> </tt>
+</div><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">     </tt>
+<a name="iotSensor.setLow"></a><div id="iotSensor.setLow-def"><a name="L19"></a><tt class="py-lineno">19</tt> <a class="py-toggle" href="#" id="iotSensor.setLow-toggle" onclick="return toggle('iotSensor.setLow');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="iot.iotSensor-class.html#setLow">setLow</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor.setLow-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iotSensor.setLow-expanded"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-docstring">''' Set low limit for data '''</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">     </tt>
+<a name="iotSensor.isHigh"></a><div id="iotSensor.isHigh-def"><a name="L23"></a><tt class="py-lineno">23</tt> <a class="py-toggle" href="#" id="iotSensor.isHigh-toggle" onclick="return toggle('iotSensor.isHigh');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="iot.iotSensor-class.html#isHigh">isHigh</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor.isHigh-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iotSensor.isHigh-expanded"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-docstring">''' Return boolean if data is equal or greater to high '''</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">false</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">     </tt>
+<a name="iotSensor.isLow"></a><div id="iotSensor.isLow-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="iotSensor.isLow-toggle" onclick="return toggle('iotSensor.isLow');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="iot.iotSensor-class.html#isLow">isLow</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor.isLow-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iotSensor.isLow-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-docstring">''' Return boolean if data is equal or less to low '''</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">false</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="iotSensor.__str__"></a><div id="iotSensor.__str__-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="iotSensor.__str__-toggle" onclick="return toggle('iotSensor.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="iot.iotSensor-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotSensor.__str__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="iotSensor.__str__-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-docstring">''' Show descriptive info about class '''</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name">x</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">m</tt><tt class="py-op">,</tt><tt class="py-name">d</tt> <tt class="py-keyword">in</tt> <tt class="py-name">inspect</tt><tt class="py-op">.</tt><tt class="py-name">getmembers</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">            <tt class="py-name">o</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">inspect</tt><tt class="py-op">.</tt><tt class="py-name">ismethod</tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-keyword">not</tt> <tt class="py-name">inspect</tt><tt class="py-op">.</tt><tt class="py-name">isfunction</tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">                <tt class="py-name">o</tt> <tt class="py-op">=</tt> <tt class="py-string">'{} {}'</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">m</tt><tt class="py-op">,</tt><tt class="py-name">repr</tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">                <tt class="py-name">x</tt> <tt class="py-op">=</tt> <tt class="py-string">'{} {}\n'</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">o</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">x</tt> </tt>
+</div></div><a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">     </tt>
+<a name="iotException"></a><div id="iotException-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="iotException-toggle" onclick="return toggle('iotException');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="iot.iotException-class.html">iotException</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="iotException-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="iotException-expanded"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Sep  1 10:11:39 2017
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
