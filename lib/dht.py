@@ -5,7 +5,7 @@ from asteval import Interpreter
 aeval = Interpreter()
 
 class Sensor(iot.iotSensor):
-    ''' temperature / humidity IoT sensor. Read dht data from url. '''
+    ''' IoT sensor for temperature or humidity from DHT-like device. '''
     def __init__(self, senstype, d):
         ''' Constructor: paramters: type [temperature|humidity]
                          d: dict with:
@@ -23,6 +23,7 @@ class Sensor(iot.iotSensor):
         self.disabled = False
         self.low = None
         self.high = None
+        self.url = d['url']
         if senstype == 'temperature':
             if not 'units' in d:
                 self.units = "f"
@@ -31,7 +32,6 @@ class Sensor(iot.iotSensor):
                     self.units = d["units"]
                 else:
                     raise ValueError("Invalid units '{}' specified.".format(d["units"]))
-            self.url = d['url']
             self.drift = d["tdrift"]
             self.high = d["thigh"]
             self.low = d["tlow"]
@@ -77,10 +77,11 @@ class Sensor(iot.iotSensor):
                 self.alarm = ''
                 self.value = 0.0
                 self.status = 1
+                url = self.url
+                self.tstamp = time.time()
                 if self.senstype == 'temperature':
                     url = '{}?units={}'.format(self.url,self.units)
                 data = urlData.getData(url)
-                self.tstamp = time.time()
                 self.value = float(data[self.senstype])
                 if type(self.drift) == int or type(self.drift) == float:
                     self.value = self.value + self.drift
@@ -96,6 +97,7 @@ class Sensor(iot.iotSensor):
                 elif self.value <= self.low:
                     self.alarm = 'Low {} {}'.format(self.senstype,self.value)
                     self.status = -1
+                self.age = self.tstamp - self.stime
                 return self
             except urlData.dataException:
                 self.alarm = 'No data ({})'.format(e)

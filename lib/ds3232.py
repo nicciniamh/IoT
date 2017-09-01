@@ -61,9 +61,9 @@ class Sensor(iot.iotSensor):
             try:
                 self.alarm = ''
                 self.status = 0
+                self.tstamp = time.time()
                 url = '{}?units={}'.format(self.url,self.units)
                 data = urlData.getData(url)
-                self.tstamp = time.time()
                 self.stime = int(data['time'])
                 self.value = float(data[self.senstype])
                 if type(self.drift) == int or type(self.drift) == float:
@@ -77,6 +77,7 @@ class Sensor(iot.iotSensor):
                 elif self.value <= self.low:
                     self.alarm = 'Low {} {}'.format(self.senstype,self.value)
                     self.status = -1
+                self.age = self.tstamp - self.stime
                 return self
 
             except urlData.dataException as e:
