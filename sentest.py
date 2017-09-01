@@ -1,102 +1,95 @@
 #!/usr/bin/env python2
-import sys
+import sys, json
 sys.path.append('lib')
 import senclass
 
-defs = [{   
-            "stype": "dht",
-            "maxAge": 120,
-            "rtype": "humidity",
-            "hdrift": 40,
-            "units": "%",
-            "hhigh": 100,
-            "hlow": 0,
-            "url": "http://rpi/sensor/temp"
-        },
-        {   
-            "stype": "dht",
-            "rtype": "temperature",
-            "tdrift": 0,
-             "units": "c",
-            "thigh": 100,
-            "tlow": 0, 
-            "url": "http://rpi/sensor/temp"
-        },
-        {
-            "stype": "ds3232",
-            "rtype": "temperature",
-            "maxAge": 60,
-            "tdrift": 0,
-            "units": "f",
-            "thigh": 100,
-            "tlow": -40,
-            "url": "http://rpi3/sensor/temp"
-        }
-]
+defs = json.loads(open('sensors.json').read())
 sens = []
 for s in defs:
     sen = senclass.instance(s["stype"], s["rtype"], s)
-    sens.append(sen)
+    sens.append({"name": s['Name'], 'sensor': sen})
 
 for s in sens:
-    print s.getData(), 'Data is {0:.2f} seconds old'.format(float(s.age)),'\n'
+    print s['sensor'].getData(), '{} Data is {:.2f} seconds old'.format(s['name'],float(s['sensor'].age)),'\n'
+
+print 'Done reading {} sensor(s)'.format(len(sens))
 
 # ** Output like: ***
 
 # __doc__ ' IoT sensor for temperature or humidity from DHT-like device. '
 # __module__ 'dht'
-# age 1.046828031539917
+# age 0.9307229518890381
 # alarm ''
 # disabled False
 # drift 40.0
 # high 100
 # low 0
-# maxAge 300
-# senstype 'humidity'
+# maxAge 120
+# senstype u'humidity'
 # status 0
-# stime 1504277509
-# tstamp 1504277510.046828
+# stime 1504290352
+# tstamp 1504290352.930723
 # type 'dht'
 # units '%'
-# url 'http://rpi/sensor/temp'
-# value 62.0
-# Data is 1.05 seconds old
+# url u'http://rpi/sensor/temp'
+# value 60.0
+# Living Room (humidity) Data is 0.93 seconds old
 # 
 # __doc__ ' IoT sensor for temperature or humidity from DHT-like device. '
 # __module__ 'dht'
-# age 1.1250760555267334
+# age 1.1818549633026123
 # alarm ''
 # disabled False
 # drift 0
 # high 100
 # low 0
 # maxAge 300
-# senstype 'temperature'
+# senstype u'temperature'
 # status 0
-# stime 1504277509
-# tstamp 1504277510.125076
+# stime 1504290352
+# tstamp 1504290353.181855
 # type 'dht'
-# units 'c'
-# url 'http://rpi/sensor/temp'
-# value 16.0
-# Data is 1.13 seconds old
+# units u'c'
+# url u'http://rpi/sensor/temp'
+# value 19.0
+# Living Room (temp) Data is 1.18 seconds old
+# 
+# __doc__ ' IoT sensor for temperature or humidity from DHT-like device. '
+# __module__ 'dht'
+# age -0.7341499328613281
+# alarm ''
+# disabled False
+# drift u'v*0.95'
+# high 100
+# low -40
+# maxAge 60
+# senstype u'temperature'
+# status 0
+# stime 1504290354
+# tstamp 1504290353.26585
+# type 'dht'
+# units u'f'
+# url u'http://d1mini2.local/sensor/temp'
+# value 69.35
+# kitchen window Data is -0.73 seconds old
 # 
 # __doc__ ' IoT sensor for DS3232 RTC devices '
 # __module__ 'ds3232'
-# age 442.21956300735474
-# alarm 'Stale data'
+# age 1.4630200862884521
+# alarm ''
 # disabled False
 # drift 0
 # high 100
 # low -40
-# maxAge 300
-# senstype 'temperature'
-# status 2
-# stime 1504277068
-# tstamp 1504277510.219563
+# maxAge 60
+# senstype u'temperature'
+# status 0
+# stime 1504290352
+# tstamp 1504290353.46302
 # type 'ds3232'
-# units 'f'
-# url 'http://rpi3/sensor/temp'
-# value 66.2
-# Data is 442.22 seconds old
+# units u'f'
+# url u'http://rpi3/sensor/temp'
+# value 71.6
+# ds3232 (temp) Data is 1.46 seconds old
 # 
+# Done reading 4 sensor(s)

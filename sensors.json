@@ -1,0 +1,52 @@
+ [{   
+            "Name": "Living Room (humidity)",
+            "id": "lrh",
+            "stype": "dht",
+            "icon": "dht.png",
+            "maxAge": 120,
+            "rtype": "humidity",
+            "hdrift": 40,
+            "units": "%",
+            "hhigh": 100,
+            "hlow": 0,
+            "url": "http://rpi/sensor/temp"
+        },
+        {   
+            "Name": "Living Room (temp)",
+            "id": "lrt",
+            "icon": "dht.png",
+            "stype": "dht",
+            "rtype": "temperature",
+            "tdrift": 0,
+             "units": "c",
+            "thigh": 100,
+            "tlow": 0, 
+            "url": "http://rpi/sensor/temp"
+        },
+        {
+            "Name": "kitchen window",
+            "id": "d1m",
+            "icon": "d1.png",
+            "stype": "dht",
+            "rtype": "temperature",
+            "maxAge": 60,
+            "tdrift": "v*0.95",
+            "units": "f",
+            "thigh": 100,
+            "tlow": -40,
+            "url": "http://d1mini2.local/sensor/temp"
+        },        
+        {
+            "Name": "ds3232 (temp)",
+            "id": "dst",
+            "icon": "ds3232.png",
+            "stype": "ds3232",
+            "rtype": "temperature",
+            "maxAge": 60,
+            "tdrift": 0,
+            "units": "f",
+            "thigh": 100,
+            "tlow": -40,
+            "url": "http://rpi3/sensor/temp"
+        }
+]
