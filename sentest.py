@@ -9,4 +9,5 @@ sens = [senclass.instance('ds3232', 'temperature',defs[0]),
         senclass.instance('dht',    'temperature',defs[1])]
 
 for s in sens:
+    s.setUnits('c')
     print s.getData()

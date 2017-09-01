@@ -18,7 +18,8 @@ class Sensor(iot.iotSensor):
         '''
         if not senstype in ['temperature','humidity']:
             raise ValueError("Invalid sensor type {}".format(senstype))
-        self.sensType = senstype;
+        self.type = 'dht'
+        self.senstype = senstype;
         self.disabled = False
         self.low = None
         self.high = None
@@ -30,7 +31,7 @@ class Sensor(iot.iotSensor):
                     self.units = d["units"]
                 else:
                     raise ValueError("Invalid units '{}' specified.".format(d["units"]))
-            self.url = '{}?units={}'.format(d['url'],self.units)
+            self.url = d['url']
             self.drift = d["tdrift"]
             self.high = d["thigh"]
             self.low = d["tlow"]
@@ -56,12 +57,11 @@ class Sensor(iot.iotSensor):
         self.stime = 0
         
     def setUnits(self,units):
-        if self.sensType == "temperature":
+        if self.senstype == "temperature":
             if units == "c" or units == "f":
                 self.units = units
             else:
                 raise ValueError("Invalid units '{}' specified.".format(units))
-            self.url = '{}?units={}'.format(d['url'],self.units)
         return self
             
     def getData(self):
@@ -77,9 +77,11 @@ class Sensor(iot.iotSensor):
                 self.alarm = ''
                 self.value = 0.0
                 self.status = 1
-                data = urlData.getData(self.url)
+                if self.senstype == 'temperature':
+                    url = '{}?units={}'.format(self.url,self.units)
+                data = urlData.getData(url)
                 self.tstamp = time.time()
-                self.value = float(data[self.sensType])
+                self.value = float(data[self.senstype])
                 if type(self.drift) == int or type(self.drift) == float:
                     self.value = self.value + self.drift
                 else:
@@ -89,10 +91,10 @@ class Sensor(iot.iotSensor):
                 self.alarm = ''
                 self.status = 0
                 if self.value >= self.high:
-                    self.alarm = 'High {} {}'.format(self.sensType,self.value)
+                    self.alarm = 'High {} {}'.format(self.senstype,self.value)
                     self.status = 1
                 elif self.value <= self.low:
-                    self.alarm = 'Low {} {}'.format(self.sensType,self.value)
+                    self.alarm = 'Low {} {}'.format(self.senstype,self.value)
                     self.status = -1
                 return self
             except urlData.dataException:

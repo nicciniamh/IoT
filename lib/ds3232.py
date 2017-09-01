@@ -16,7 +16,8 @@ class Sensor(iot.iotSensor):
         '''
         if not senstype in ['temperature']:
             raise ValueError("Invalid sensor type {}".format(senstype))
-        self.sensType = senstype;
+        self.type = 'ds3232'
+        self.senstype = senstype;
         self.disabled = False
         self.low = None
         self.high = None
@@ -27,7 +28,7 @@ class Sensor(iot.iotSensor):
                 self.units = d["units"]
             else:
                 raise ValueError("Invalid units '{}' specified.".format(d["units"]))
-        self.url = '{}?units={}'.format(d['url'],self.units)
+        self.url = d['url']
         self.drift = d["tdrift"]
         self.high = d["thigh"]
         self.low = d["tlow"]
@@ -42,12 +43,12 @@ class Sensor(iot.iotSensor):
         
     def setUnits(self,units):
         ''' Set temperature units to units (c or f) this gets prepended to any URL that is not a file object '''
-        if self.sensType == "temperature":
+        if self.senstype == "temperature":
             if units == "c" or units == "f":
                 self.units = units
             else:
                 raise ValueError("Invalid units '{}' specified.".format(units))
-            self.url = '{}?units={}'.format(d['url'],self.units)
+            #self.url = '{}?units={}'.format(self.url,self.units)
         return self
             
     def getData(self):
@@ -60,20 +61,21 @@ class Sensor(iot.iotSensor):
             try:
                 self.alarm = ''
                 self.status = 0
-                data = urlData.getData(self.url)
+                url = '{}?units={}'.format(self.url,self.units)
+                data = urlData.getData(url)
                 self.tstamp = time.time()
                 self.stime = int(data['time'])
-                self.value = float(data[self.sensType])
+                self.value = float(data[self.senstype])
                 if type(self.drift) == int or type(self.drift) == float:
                     self.value = self.value + self.drift
                 else:
                     aeval.symtable['v'] = self.value
                     self.value = aeval(self.drift)
                 if self.value >= self.high:
-                    self.alarm = 'High {} {}'.format(self.sensType,self.value)
+                    self.alarm = 'High {} {}'.format(self.senstype,self.value)
                     self.status = 1
                 elif self.value <= self.low:
-                    self.alarm = 'Low {} {}'.format(self.sensType,self.value)
+                    self.alarm = 'Low {} {}'.format(self.senstype,self.value)
                     self.status = -1
                 return self
 
