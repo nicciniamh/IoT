@@ -41,6 +41,7 @@ class Sensor(iot.iotSensor):
         self.stime = 0.0
         
     def setUnits(self,units):
+        ''' Set temperature units to units (c or f) this gets prepended to any URL that is not a file object '''
         if self.sensType == "temperature":
             if units == "c" or units == "f":
                 self.units = units
@@ -90,27 +91,26 @@ class Sensor(iot.iotSensor):
         return self            
 
     def getAlarm(self):
+        ''' Return current alarm text or None when there is no alarm. '''
         if self.status == 0:
             return None
         return self.alarm
 
     def isHigh(self):
+        ''' return true when alarm is high '''
         return self.status == 1
     
     def isLow(self):
+        ''' return true when alarm is low '''
         return self.status == -1
     
     def setHigh(self,high):
+        ''' set high alarm value to high '''
         self.high = high
         return self
     
     def setLow(self,low):
+        ''' set low alarm value to low '''
         self.low = low
         return self
     
-if __name__ == "__main__":
-    sys.path.append('.')
-    d = {"tdrift": 'int((v-32)*(5/9))', "thigh": 100, "tlow": -40, "url": "http://rpi3/sensor/temp"}
-    ds = ds3232Sensor("temperature",d).setUnits('c')
-    ds.getData()
-    print ds
