@@ -17,7 +17,7 @@ def __loadModule(module):
 
 def instance(stype, rtype, sendef):
     '''
-        Dynamic loading of IoT sensor module and sensor object instanctiation.
+        Dynamic loading of IoT sensor module and sensor object instantiation.
 
         A nice little wrapper providing object reflection for sensor modules.
 
