@@ -21,6 +21,10 @@ class Sensor(iot.iotSensor):
         self.disabled = False
         self.low = None
         self.high = None
+        if 'maxAge' in d:
+            self.maxAge = int(d['maxAge'])
+        else:
+            self.maxAge = 300
         if not 'units' in d:
             self.units = "f"
         else:
@@ -78,6 +82,9 @@ class Sensor(iot.iotSensor):
                     self.alarm = 'Low {} {}'.format(self.senstype,self.value)
                     self.status = -1
                 self.age = self.tstamp - self.stime
+                if self.age >= self.maxAge:
+                    self.status = 2
+                    self.alarm = 'Stale data'
                 return self
 
             except urlData.dataException as e:
@@ -89,6 +96,10 @@ class Sensor(iot.iotSensor):
                 self.value = 0.0
                 self.status = 1
                 self.alarm = 'Invalid data ({})'.format(e)
+                self.age = self.tstamp - self.stime
+            if self.age >= self.maxAge:
+                self.status = 2
+                self.alarm = 'Stale data'
             time.sleep(.5)
             attempts = attempts - 1
         return self            
@@ -107,6 +118,10 @@ class Sensor(iot.iotSensor):
         ''' return true when alarm is low '''
         return self.status == -1
     
+    def isStale(self):
+        ''' Return whether data is older than max age '''
+        return self.status == 2
+    
     def setHigh(self,high):
         ''' set high alarm value to high '''
         self.high = high
@@ -116,4 +131,8 @@ class Sensor(iot.iotSensor):
         ''' set low alarm value to low '''
         self.low = low
         return self
+
+    def maxAge(self,age):
+        ''' Maximum age for data, in seconds '''
+        self.maxAge = age
     

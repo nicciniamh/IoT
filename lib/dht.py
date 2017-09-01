@@ -15,15 +15,20 @@ class Sensor(iot.iotSensor):
                          [t|h]high = float for high data value 
                          [t|h]low  = float for low data value 
                          url = device url to obtain data
+                         maxAge = number of seconds of age when data is considered stale
         '''
         if not senstype in ['temperature','humidity']:
             raise ValueError("Invalid sensor type {}".format(senstype))
         self.type = 'dht'
-        self.senstype = senstype;
+        self.senstype = senstype
         self.disabled = False
         self.low = None
         self.high = None
         self.url = d['url']
+        if 'maxAge' in d:
+            self.maxAge = int(d['maxAge'])
+        else:
+            self.maxAge = 300
         if senstype == 'temperature':
             if not 'units' in d:
                 self.units = "f"
@@ -98,6 +103,10 @@ class Sensor(iot.iotSensor):
                     self.alarm = 'Low {} {}'.format(self.senstype,self.value)
                     self.status = -1
                 self.age = self.tstamp - self.stime
+                if self.age >= self.maxAge:
+                    self.status = 2
+                    self.alarm = 'Stale data'
+
                 return self
             except urlData.dataException:
                 self.alarm = 'No data ({})'.format(e)
@@ -105,6 +114,10 @@ class Sensor(iot.iotSensor):
                 self.alarm = 'Invalid data ({})'.format(e)
             except ValueError as e:
                 self.alarm = 'Decode error ({})'.format(e)
+            self.age = self.tstamp - self.stime
+            if self.age >= self.maxAge:
+                self.status = 2
+                self.alarm = 'Stale data'
             time.sleep(.5)
             attempts = attempts - 1
         return self            
@@ -119,6 +132,9 @@ class Sensor(iot.iotSensor):
     
     def isLow(self):
         return self.status == -1
+
+    def isStale(self):
+        return self.status == 2
     
     def setHigh(self,high):
         self.high = high
@@ -127,10 +143,7 @@ class Sensor(iot.iotSensor):
     def setLow(self,low):
         self.low = low
         return self
+
+    def maxAge(self,age):
+        self.maxAge = age
     
-if __name__ == "__main__":
-    sys.path.append('.')
-    d = {"tdrift": 0, "thigh": 100, "tlow": -40, "url": "http://rpi/sensor/temp"}
-    dht = dhtSensor("temperature",d)
-    dht.getData()
-    print dht
