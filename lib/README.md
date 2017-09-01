@@ -1,4 +1,4 @@
-#IoT and Sensors
+# IoT and Sensors
 
 ## IoT
 The IoT base class (iotSensor) does nothing and throws an exception when instantiated. 
@@ -18,6 +18,15 @@ The methods defined by the IoT base class are:
     isHigh()  Return boolean if data is equal or greater to high
     isLow()  Return boolean if data is equal or less to low
 ```
+
+## *senclass* provides dynamic loading of IoT sensor module and sensor object instantiation.
+This should be used when dynamic sensor typing is to be used by an application. Sensor class modules 
+are not loaded until needed.
+
+The instance function is used from senclass to instantiate a sensor. E.g.
+``` sensor = senclass.instance('dht','temperature', {*definitiondict*}) ```
+This will return sensor as a sensor with the same interfaces (as apporpriate) as IoT, overriding them where needed. 
+
 ## DHT
 The dht.Sensor IoT class reads temperature or humidity from a DHT like sensor using urllib 
 to get the data values in JSON format. 
