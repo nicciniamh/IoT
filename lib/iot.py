@@ -1,6 +1,5 @@
 import inspect
-#
-# base class for IoT sensors
+''' base class for IoT sensors '''
 class iotSensor:
     ''' Base class for IoT sensors - template class only ''' 
     def __init__(self):
@@ -39,5 +38,5 @@ class iotSensor:
                 x = '{} {}\n'.format(x,o)
         return x
     
-
-    
+class iotException(Exception):
+    pass
