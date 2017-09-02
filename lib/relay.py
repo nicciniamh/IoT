@@ -1,6 +1,4 @@
-import json, inspect, urllib, time, sys, iot, urlData, relaybaseclass
-from asteval import Interpreter
-aeval = Interpreter()
+import time, sys, urlData, relaybaseclass
 
 class Sensor(relaybaseclass.Sensor):
     ''' IoT sensor virtual relay'''
@@ -10,7 +8,7 @@ class Sensor(relaybaseclass.Sensor):
                          url = device url to read/write state
         '''
         self.disabled = False
-        self.type = 'virtualrelay'
+        self.type = 'relay'
         self.url = d['url']
         self.value = False
         if 'Name' in d:
@@ -19,16 +17,18 @@ class Sensor(relaybaseclass.Sensor):
             self.name = 'virtual relay'
 
     def getData(self):
+        now = time.time()
         self.age = 0
+        data = urlData.getData(self.url)
+        self.value = data['state']
         return self
 
     def sendData(self,state):
         self.value = True if state else False
         self.age = 0
-        print self.name,'set state to','on' if self.value else 'off'
+        cmd='on' if state else 'off'
+        data = urlData.getData('{}?cmd={}'.format(self.url,cmd))
+        self.value = data['state']
         return self
 
-    def maxAge(self,age):
-        ''' set maximum data age '''
-        self.maxAge = age
     

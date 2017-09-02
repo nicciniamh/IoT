@@ -17,7 +17,7 @@
             "icon": "dht.png",
             "stype": "temperature",
             "rtype": "temperature",
-            "units": "c",
+            "units": "f",
             "drift": 0,
             "high": 100,
             "low": 32, 
@@ -37,7 +37,7 @@
             "url": "http://d1mini2.local/sensor/temp"
         },        
         {
-            "Name": "ds3232 (temp)",
+            "Name": "ds3232",
             "id": "dst",
             "icon": "ds3232.png",
             "stype": "temperature",
@@ -50,11 +50,16 @@
             "url": "http://rpi3/sensor/temp"
         },
         {
-            "Name": "virtual relay",
-            "id": "vrlt",
+            "Name": "fan control",
+            "id": "relay",
             "icon": "ds3232.png",
-            "stype": "virtrelay",
+            "stype": "relay",
             "maxAge": 60,
-            "url": "http://rpi3/sensor/temp"
+            "url": "http://192.168.1.149"
+        },
+        {
+            "Name": "fan script",
+            "stype": "script",
+            "script": "fanscript.pyi"
         }
 ]
