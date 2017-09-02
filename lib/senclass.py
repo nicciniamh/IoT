@@ -15,7 +15,7 @@ def __loadModule(module):
         except Exception as e:
             raise iot.iotException('{}: {}'.format(module,e))
 
-def instance(stype, rtype, sendef):
+def instance(stype, sendef):
     '''
         Dynamic loading of IoT sensor module and sensor object instantiation.
 
@@ -32,4 +32,4 @@ def instance(stype, rtype, sendef):
         iot.iotException when sensor class module not found.
     '''
     __loadModule(stype)
-    return __loadedModules[stype].Sensor(rtype,sendef)
+    return __loadedModules[stype].Sensor(sendef)

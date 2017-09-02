@@ -1,14 +1,13 @@
 # Internet of Things (IoT) Stuff - Updated Version
 
+I have done a major revamp of the sensor class modules. Instead of being specific to sensor hardware they have classes of temperature, humidity, relay, etc. This is more in line the the IoT strategy of 
+"abstraction" over the network. Unless there is a specific reason to use a specific sensor type it is better to use generic models. For example, I have two type of sensor devices but their internet servers 
+serve the data in the same format, thus, there is no reson to differentiate between the two. 
+
+----
+
 These files contain descriptions and exampls of my IoT Strategies.
 
-I have three devices I use for my IoT
-
-- [Banana Pi](http://www.bananapi.org/p/product.html) I use the M2 model
-- [Raspberry Pi](https://www.raspberrypi.org/)  I am using a Pi model 2
-- [WeMos D1 Mini](https://www.wemos.cc/product/d1-mini.html)
-
-Both Pi units run Linux and the WeMos D1 uses 'bare-metal' code downloaded directly to the device. Each device has network connectivity. The Raspberry Pi uses Cat 5 Ethernet and the other devices use WiFi
 
 ## IoT
 The IoT base class (iotSensor) does nothing and throws an exception when instantiated. 

@@ -29,25 +29,31 @@ The instance function is used from senclass to instantiate a sensor. E.g.:
 
 This will return sensor as a sensor with the same interfaces (as apporpriate) as IoT, overriding them where needed. 
 
-## DHT
-The dht.Sensor IoT class reads temperature or humidity from a DHT like sensor using urllib 
+## thbaselass defines all the code and properties for a temperature or humidity sensor (such as dht sensors)
+
+The thbaseclass.Sensor IoT class is derived from iotSensor and provides the 
+code and properties to reads temperature or humidity from a remote sensor using urllib 
 to get the data values in JSON format. 
 
 The data expected has the format of: 
-``` {"time":1487469162,"temperature":68,"units":"f","status":"ok","humidity":20} ```
+
+``` {"time":1487469162,"temperature":68,"units":"f","status":"ok"} ``` for temperature
+
+or
+
+``` {"time":1487469162,"humidity":20,"units":"f","status":"ok"} ``` for humidity.
+
 
 The object is instantiated with:
- ```   dht = dht.Sensor(type, definition_dict) ```
+ ```   sensor = temperature.Sensor(definition_dict) ```
 Where
-    type  is 'temperature' or 'humidity'
-and
     definition dict has the following members:
                 sys = system name
                 id = descriptive id
                 units = c or f for temperature sensors.
-                [t|h]drift = float to add to temperature or humidty
-                [t|h]high = float for high data value 
-                [t|h]low  = float for low data value 
+                drift = float to add to temperature or humidty
+                high = float for high data value 
+                low  = float for low data value 
                 url = device url from which to obtain data
 '''
 All of the iotSensor methods are available. Additional methods/properties are:
